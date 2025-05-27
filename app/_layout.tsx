@@ -8,6 +8,7 @@ const queryClient = new QueryClient();
 
 const RootLayout = () => {
   nowPlayingAction();
+
   return (
     <QueryClientProvider client={queryClient}>
       <Stack screenOptions={{ headerShown: false }} />
