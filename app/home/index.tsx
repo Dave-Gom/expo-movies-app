@@ -6,7 +6,8 @@ import { ActivityIndicator, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const HomeScreen = () => {
-  const { nowPlayingQuery } = useMovies();
+  const { nowPlayingQuery, popularQuery, upcomingQuery, topRatedQuery } =
+    useMovies();
   const safeArea = useSafeAreaInsets();
   if (nowPlayingQuery.isLoading) {
     return (
@@ -21,8 +22,19 @@ const HomeScreen = () => {
       <Text className="text-3xl font-bold px-4 mb-2">Home Screen</Text>
       <MainSlideShow movies={nowPlayingQuery.data || []} />
       <MovieHorizontalList
-        movies={nowPlayingQuery.data || []}
+        movies={popularQuery.data || []}
         title="Populares"
+        className="mb-5"
+      />
+      <MovieHorizontalList
+        movies={topRatedQuery.data || []}
+        title="Mejor Valoradas"
+        className="mb-5"
+      />
+      <MovieHorizontalList
+        movies={upcomingQuery.data || []}
+        title="Proximamente"
+        className="mb-5"
       />
     </View>
   );
