@@ -1,4 +1,5 @@
-import MainSlideShow from "@/presentation/components/MainSlideShow";
+import MainSlideShow from "@/presentation/components/movies/MainSlideShow";
+import MovieHorizontalList from "@/presentation/components/movies/MovieHorizontalList";
 import useMovies from "@/presentation/hooks/useMovies";
 import React from "react";
 import { ActivityIndicator, Text, View } from "react-native";
@@ -19,6 +20,10 @@ const HomeScreen = () => {
     <View className="mt-2" style={{ paddingTop: safeArea.top }}>
       <Text className="text-3xl font-bold px-4 mb-2">Home Screen</Text>
       <MainSlideShow movies={nowPlayingQuery.data || []} />
+      <MovieHorizontalList
+        movies={nowPlayingQuery.data || []}
+        title="Populares"
+      />
     </View>
   );
 };
