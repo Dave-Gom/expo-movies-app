@@ -1,3 +1,5 @@
+import MovieCast from "@/presentation/components/movie/MovieCast";
+import MovieDescription from "@/presentation/components/movie/MovieDescription";
 import MovieHeader from "@/presentation/components/movie/MovieHeader";
 import useMovie from "@/presentation/hooks/useMovie";
 import { useLocalSearchParams } from "expo-router";
@@ -6,7 +8,7 @@ import { ActivityIndicator, ScrollView, Text, View } from "react-native";
 
 const MoviesPage = () => {
   const { id } = useLocalSearchParams();
-  const { movieQuery } = useMovie(+id);
+  const { movieQuery, castQuery } = useMovie(+id);
 
   if (movieQuery.isLoading || !movieQuery.data) {
     return (
@@ -24,7 +26,8 @@ const MoviesPage = () => {
         originalTitle={movieQuery.data.originalTitle}
         title={movieQuery.data.title}
       />
-      <Text>MoviesPage</Text>
+      <MovieDescription movie={movieQuery.data} />
+      <MovieCast cast={castQuery.data || []} />
     </ScrollView>
   );
 };
