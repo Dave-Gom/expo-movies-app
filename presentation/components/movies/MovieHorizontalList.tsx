@@ -13,7 +13,7 @@ interface MoviePosterProps {
   title?: string;
   movies: Movie[];
   className?: string;
-  loadNextPage?: () => Promise<void>;
+  loadNextPage?: () => void;
 }
 
 const MovieHorizontalList = ({
